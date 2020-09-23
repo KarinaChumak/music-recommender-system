@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import '../styles/index.css';
 import { Layout, Menu } from 'antd';
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+
 
 import {
   MenuUnfoldOutlined,
@@ -15,8 +17,11 @@ import {
 } from '@ant-design/icons';
 
 import { ConnectedPlaylistsTab } from './PlaylistsTab';
+import { Content } from './Content';
+import { Test } from './Test';
+// import { history } from '../store/history';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider } = Layout;
 
 export const Navigation = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -32,40 +37,27 @@ export const Navigation = () => {
           onClick: toggle,
         })}
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}    >
+
           <Menu.Item key="1" icon={<UserOutlined />}>
-            Your music
-            </Menu.Item>
+            <Link to="/dashboard">Your music</Link>
+          </Menu.Item>
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            Recommended to you
-            </Menu.Item>
+            <Link to="/test">Recommended to you </Link>
+          </Menu.Item>
           <Menu.Item key="3" icon={<UploadOutlined />}>
-            Explore
-            </Menu.Item>
+            <Link to="/dashboard3">Explore </Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 10 }}>
           Playing now
         </Header>
-        <ConnectedPlaylistsTab></ConnectedPlaylistsTab>
-
-        {/* <Route
-          exact
-          path="/dashboard"
-          render={() => (<ConnectedPlaylistsTab />)}>
-
-        </Route> */}
-
 
       </Layout>
+
+      <Content></Content>
     </Layout>
+    // </Router>
   );
 }
-
-// function mapStateToProps(state) {
-//   return {
-//     playlists: state.playlists
-//   }
-// }
-
-// export const ConnectedNavigation = connect(mapStateToProps)(Navigation);
