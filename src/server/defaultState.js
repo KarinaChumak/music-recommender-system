@@ -5,15 +5,17 @@ export const defaultState = {
   }],
   artists: [{
     id: "A1",
-    name: "Kansas"
+    artistName: "Kansas",
+    avatar: "https://upload.wikimedia.org/wikipedia/en/a/a6/Kansas-dust-in-the-wind.jpg"
   },
   {
     id: "A2",
-    name: "Queen"
+    artistName: "Queen",
+    avatar: "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Queen-Hot-Space-album-cover-820.jpg"
   },
   {
     id: "A3",
-    name: "MONATIK"
+    artistName: "MONATIK"
   }],
   songs: [
     {
@@ -25,7 +27,7 @@ export const defaultState = {
     {
       name: "Bohemian Rhapsody",
       id: "S2",
-      arist: "A2",
+      artist: "A2",
       duration: "7m 12s"
     },
     {

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Typography } from 'antd';
 const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
 import { ConnectedPlaylist } from './Playlist';
 
 export const PlaylistsTab = ({ playlists }) => {
@@ -14,9 +15,14 @@ export const PlaylistsTab = ({ playlists }) => {
           padding: 24,
           minHeight: 500,
         }}>
-        Your playlists
-          {playlists.map(playlist => (
-          <ConnectedPlaylist id={playlist.id} name={playlist.name} songs={playlist.songs}></ConnectedPlaylist>
+
+        <Title>Your playlists</Title>
+        {playlists.map(playlist => (
+          <ConnectedPlaylist
+            key={playlist.id}
+            name={playlist.name}
+            songs={playlist.songs}
+          ></ConnectedPlaylist>
         ))}
       </Content>
     </>
