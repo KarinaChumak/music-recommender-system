@@ -8,8 +8,9 @@ import {
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
 import { ConnectedPlaylist } from './Playlist';
+import { requestSongPlaylistAddition } from '../store/mutations';
 
-export const RecommendedTab = ({ songs }) => {
+export const RecommendedTab = ({ songs, addSongToPlaylist }) => {
   return (
     <>
       <Content
@@ -36,7 +37,10 @@ export const RecommendedTab = ({ songs }) => {
                 description={song.author}
 
               />
-              <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+              <Button type="primary"
+                shape="circle"
+                icon={<PlusOutlined />}
+                onClick={() => addSongToPlaylist(song.id, 'P0')} />
             </List.Item>
           )}
         />
@@ -45,7 +49,7 @@ export const RecommendedTab = ({ songs }) => {
   )
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const allSongs = state.songs;
   const allArtists = state.artists;
   var artistsObj = allArtists.reduce(
@@ -56,4 +60,12 @@ function mapStateToProps(state) {
   }
 }
 
-export const ConnectedRecommendedTab = connect(mapStateToProps)(RecommendedTab);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addSongToPlaylist(id, playlistId) {
+      dispatch(requestSongPlaylistAddition(id, playlistId));
+    }
+  }
+}
+
+export const ConnectedRecommendedTab = connect(mapStateToProps, mapDispatchToProps)(RecommendedTab);

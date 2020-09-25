@@ -51,6 +51,12 @@ export const defaultState = {
   ],
   playlists: [
     {
+      id: "P0",
+      name: " Default",
+      user: "U1",
+      songs: []
+    },
+    {
       id: "P1",
       name: "Favourite songs",
       user: "U1",

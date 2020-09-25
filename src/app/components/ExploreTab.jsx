@@ -12,7 +12,6 @@ import {
 import { ConnectedPlaylist } from './Playlist';
 
 export const ExploreTab = ({ songs }) => {
-  console.log(songs);
   return (
     <>
       <Content
@@ -27,7 +26,7 @@ export const ExploreTab = ({ songs }) => {
           <Row gutter={16}>
             {songs.map(
               (song) => (
-                <Col span={6}>
+                <Col span={6} key={song.id}>
                   <Card
 
                     style={{ width: 300, margin: 15 }}
